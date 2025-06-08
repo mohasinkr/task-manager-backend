@@ -6,6 +6,6 @@ const router = Router();
 
 // v1 routes
 router.use("/auth", authRouter);
-router.use("/tasks", taskRouter);
+router.use("/task", taskRouter);
 
 export default router;

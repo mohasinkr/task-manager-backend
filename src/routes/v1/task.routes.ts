@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { getTasks, createTask } from "../../controllers/task.controller";
-import { getUsers, createUser } from "../../controllers/user.controller";
+import { createTask, getTasks } from "../../controllers/task.controller";
+import { authMiddleware } from "@/middlewares/auth.middleware";
 
 const router = Router();
 
-router.get("/tasks", getTasks);
-router.post("/task", createTask);
+router.use(authMiddleware);
+
+router.get("/", getTasks);
+router.post("/", createTask);
 
 export default router;

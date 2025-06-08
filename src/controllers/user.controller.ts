@@ -7,6 +7,7 @@ import {
 } from "@/services/user.service";
 import { successResponse } from "@/utils/http-response";
 import { Request, Response } from "express";
+import { Types } from "mongoose";
 
 async function getUsers(_req: Request, res: Response) {
   try {
@@ -64,7 +65,7 @@ const loginUser = async (req: Request, res: Response) => {
     await validatePassword(password, user.password);
 
     const token = generateAuthToken({
-      id: user._id,
+      id: user._id as Types.ObjectId,
       username: user.username,
       email: user.email,
     });
